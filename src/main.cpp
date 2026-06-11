@@ -9,10 +9,10 @@ const int groupNumber = 20; // Set your group number to make the IP address cons
 WiFiWebServer server(80);
 
 //motor
-const int right_motor_DIR_pin = 2;
-const int right_motor_PWM_pin = 3;
-const int left_motor_DIR_pin = 8;
-const int left_motor_PWM_pin = 9;
+const int right_motor_DIR_pin = 8;
+const int right_motor_PWM_pin = 9;
+const int left_motor_DIR_pin = 2;
+const int left_motor_PWM_pin = 3;
 
 //type: infrared
 const int IR_PIN = 4;
@@ -159,8 +159,8 @@ void controller_movement(){
     horizontal_movement = analogue_stick_X_axis * abs(speed); //the speed determines how sharp the turn is
   }
 
-  int right_wheel_speed = (vertical_movement + horizontal_movement) * 255;
-  int left_wheel_speed =  (vertical_movement - horizontal_movement) * 255;
+  int left_wheel_speed = (vertical_movement + horizontal_movement) * 255;
+  int right_wheel_speed =  (vertical_movement - horizontal_movement) * 255;
 
   if(left_wheel_speed > 255){
     left_wheel_speed = 255;
