@@ -214,7 +214,12 @@ void controller_movement(){
 //type: infrared
 
 void countPulses() {
-    pulseCount++;
+    static unsigned long lastPulse = 0;
+    unsigned long now = micros();
+    if (now - lastPulse > 500) {  // ignore pulses within 500µs of each other
+        pulseCount++;
+        lastPulse = now;
+    }
 }
 
 void infrared_pulses(){
