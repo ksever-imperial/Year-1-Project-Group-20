@@ -23,7 +23,7 @@ const unsigned long sampleWindow = 150;
 int infrared_pulse_rate = 0;
 float infrared_pulse_rate_exact = 0;
 
-//circular buffer for last 10 IR readings
+//for last 10 IR readings
 const int IR_HISTORY_SIZE = 15;
 float ir_history[IR_HISTORY_SIZE];
 int ir_history_index = 0;
@@ -39,14 +39,14 @@ int restingValue = 0;
 
 enum MagDir { MAG_UP, MAG_DOWN, MAG_NONE };
 
-//circular buffer for magnetic field readings
+//for magnetic field readings
 const int MAG_HISTORY_SIZE = 15;
 MagDir mag_history[MAG_HISTORY_SIZE];
 int mag_history_index = 0;
 int mag_history_count = 0;
 MagDir modal_mag = MAG_NONE;
 
-//circular buffer for ultrasound readings
+//for ultrasound readings
 const int US_HISTORY_SIZE = 15;
 bool us_history[US_HISTORY_SIZE];
 int us_history_index = 0;
@@ -610,7 +610,7 @@ void rock_scan(){
   }
 
   else if(ir_valid){
-    //agnetic gave NONE, classify with IR + ultrasound
+    //if magnetic gives NONE, classify with IR + ultrasound
     if(infrared_pulse_rate == 547 && ultrasound == HIGH){
       rock_type = "Basaltoid";
     }
